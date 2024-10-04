@@ -1,0 +1,12 @@
+<div class="skills-container">
+    <input 
+        type="text" 
+        placeholder="Enter your skills..." 
+        (keydown)="onKeyDown($event)" 
+    />
+    <div class="skills-pills-wrapper">
+        @for (skill of skills; track skill) {
+            <div class="skill" (click)="deleteSkill(skill)">{{skill}}</div>
+        }
+    </div>
+</div>

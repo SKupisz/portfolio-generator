@@ -1,0 +1,32 @@
+.container {
+    text-align: center;
+    align-items: center;
+}
+
+.form-group {
+    padding: 6px 15px;
+}
+
+.form-group > label {
+    font-family: inherit;
+    padding: 0px 4px;
+}
+
+.form-group > input {
+    border: none;
+    border-radius: 5px;
+    padding: 10px 15px;
+    color: white;
+    background: #333;
+}
+
+.btn {
+    padding: 10px 20px;
+    border: none;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 10px;
+    background: #323254;
+    color: white;
+    cursor: pointer;
+}

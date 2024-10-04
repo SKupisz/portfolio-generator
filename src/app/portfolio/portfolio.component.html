@@ -1,0 +1,36 @@
+<div class="container">
+    <form (keydown.enter)="$event.preventDefault()" [formGroup]="portfolioForm" action="" (ngSubmit)="onSubmit()">
+        <h2>Personal data</h2>
+
+      <div class="form-group">
+        <label for="firstName">First Name:</label>
+        <input id="firstName" formControlName="firstName" class="form-control" type="text" placeholder="Enter your first name" />
+      </div>
+  
+      <div class="form-group">
+        <label for="lastName">Last Name:</label>
+        <input id="lastName" formControlName="lastName" class="form-control" type="text" placeholder="Enter your last name" />
+      </div>
+
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input type="email" name="email" id="email" formControlName="email" placeholder="Enter the email"/>
+    </div>
+
+    <h2>Skills</h2>
+    
+    <app-skills [skills]="skills" (newSkillAdded)="onSkillAdded($event)"
+    (skillDeleted)="onSkillDeleted($event)"></app-skills>
+  
+    <button type="submit" class="btn btn-primary">Generate Portfolio</button>
+    </form>
+    @if (this.submitted) {
+        <div>
+          <h3>Generated Portfolio:</h3>
+          <p><strong>First Name:</strong> {{ portfolioData.firstName }}</p>
+          <p><strong>Last Name:</strong> {{ portfolioData.lastName }}</p>
+        </div>
+
+    }
+  </div>
+  

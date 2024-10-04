@@ -1,0 +1,32 @@
+.skills-container {
+    padding: 10px 20px;
+    text-align: center;
+    display: flex;
+    gap: 8px;
+    flex-direction: column;
+    width: 60%;
+    position: relative;
+    left: 20%;
+
+    input {
+        border: none;
+        border-radius: 5px;
+        box-shadow: 1px 1px 2px rgba(0,0,0,.4);
+        color: white;
+        background: #333;
+        padding: 10px 15px;
+    }
+
+    .skills-pills-wrapper {
+        display: flex;
+        gap: 4px;
+        justify-content: center;
+
+        .skill {
+            background: #101342;
+            border-radius: 5px;
+            padding: 10px;
+            color: white;
+        }
+    }
+}
