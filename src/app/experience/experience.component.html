@@ -1,0 +1,32 @@
+<section class="experience-form-wrapper">
+    <input type="text" placeholder="Company's name..." [formControl]="companyName" required />
+    <input type="text" placeholder="Job title..." [formControl]="jobTitle" required />
+    <div class="date-wrapper">
+        <input type="date" [formControl]="startDate" placeholder="Start date..." required/>
+        <input type="date" [formControl]="endDate" placeholder="End date..." required/>
+    </div>
+    <div class="current-job-wrapper">
+        <label for="currentJobInput">Current job</label>
+        <input type="checkbox" id="currentJobInput" [checked]="currentJob" (change)="toggleCurrentJob()" />
+    </div>
+    <button (click)="addExperience($event)">Add</button>
+</section>
+
+<section class="jobs">
+
+    @for(job of jobs; track job) {
+        <div class="job-wrapper">
+            <div class="delete-button-wrapper">
+                <button type="button" class="delete-skill-btn" (click)="deleteExperience(job.id)">
+                    X
+                </button>
+            </div>
+            <h4>{{job.companyName}}</h4>
+            <h5>{{job.jobTitle}}</h5>
+            <p>
+                {{job.startDate}} - {{job.currentJob ? 'Now' : job.endDate}}
+            </p>
+        </div>
+    }    
+
+</section>

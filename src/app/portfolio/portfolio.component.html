@@ -4,18 +4,27 @@
 
       <div class="form-group">
         <label for="firstName">First Name:</label>
-        <input id="firstName" formControlName="firstName" class="form-control" type="text" placeholder="Enter your first name" />
+        <input id="firstName" formControlName="firstName" class="form-control input" type="text" placeholder="Enter your first name" />
       </div>
   
       <div class="form-group">
         <label for="lastName">Last Name:</label>
-        <input id="lastName" formControlName="lastName" class="form-control" type="text" placeholder="Enter your last name" />
+        <input id="lastName" formControlName="lastName" class="form-control input" type="text" placeholder="Enter your last name" />
       </div>
 
       <div class="form-group">
-        <label for="email">Email</label>
-        <input type="email" name="email" id="email" formControlName="email" placeholder="Enter the email"/>
+        <label for="email">Email: </label>
+        <input class="input" type="email" name="email" id="email" formControlName="email" placeholder="Enter the email"/>
     </div>
+    
+    <h2>Experience</h2>
+
+    <app-experience 
+      (addNewJob)="addNewExperience($event)" 
+      (deleteJob)="deleteExperience($event)"
+      [jobs]="jobs" 
+      [nextJobId]="nextJobId"
+    ></app-experience>
 
     <h2>Skills</h2>
     
