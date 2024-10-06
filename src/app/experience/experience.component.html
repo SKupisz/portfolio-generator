@@ -9,7 +9,7 @@
         <label for="currentJobInput">Current job</label>
         <input type="checkbox" id="currentJobInput" [checked]="currentJob" (change)="toggleCurrentJob()" />
     </div>
-    <button (click)="addExperience($event)">Add</button>
+    <button (click)="addExperience($event)" [disabled]="isAddingDisabled">Add</button>
 </section>
 
 <section class="jobs">

@@ -20,6 +20,7 @@ export class PortfolioComponent implements OnInit {
   skills: string[] = [];
   jobs: ExperienceData[] = [];
   nextJobId = 1;
+  generateBtnDisabled = true;
 
   constructor(private fb: FormBuilder) {
     this.portfolioForm = this.fb.group({
@@ -27,9 +28,16 @@ export class PortfolioComponent implements OnInit {
       lastName: [''],
       email: ['']
     });
+    this.portfolioForm.valueChanges.subscribe(() => this.handleGenerationEnabling());
   }
 
   ngOnInit(): void {}
+
+  handleGenerationEnabling() {
+    this.generateBtnDisabled = 
+      this.portfolioForm.value.firstName.length === 0
+      || this.portfolioForm.value.lastName.length === 0;
+  }
 
   calculateXPosition(text: string, doc: jsPDF, pageWidth: number):number{
     return (pageWidth - doc.getTextWidth(text))/2;

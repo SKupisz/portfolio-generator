@@ -30,6 +30,14 @@ export class ExperienceComponent {
   endDate = new FormControl('');
 
   currentJob = false;
+  isAddingDisabled = true;
+
+  constructor(){
+    this.jobTitle.valueChanges.subscribe(() => this.handleAddingButton());
+    this.companyName.valueChanges.subscribe(() => this.handleAddingButton());
+    this.startDate.valueChanges.subscribe(() => this.handleAddingButton());
+    this.endDate.valueChanges.subscribe(() => this.handleAddingButton());
+  }
 
   toggleCurrentJob() {
     this.currentJob = !this.currentJob;
@@ -40,6 +48,14 @@ export class ExperienceComponent {
     } else {
       this.endDate.enable();
     }
+    this.handleAddingButton();
+  }
+
+  handleAddingButton() {
+    this.isAddingDisabled = this.jobTitle.value?.length === 0 
+    || this.companyName.value?.length === 0
+    || this.startDate.value?.length === 0
+    || (!this.currentJob && this.endDate.value?.length === 0);
   }
 
   addExperience(event: MouseEvent) {
@@ -47,13 +63,16 @@ export class ExperienceComponent {
     const jobTitleValue = this.jobTitle.value ?? '';
     const companyNameValue = this.companyName.value ?? '';
     const jobStartDate = this.startDate.value ?? '';
-    if(jobTitleValue.length > 0 && companyNameValue.length > 0 && jobStartDate.length > 0){
+    const jobEndDate = this.endDate.value ?? '';
+    if(jobTitleValue.length > 0 && companyNameValue.length > 0 && jobStartDate.length > 0
+      && (this.currentJob || (!this.currentJob && jobEndDate.length > 0))
+    ){
       this.addNewJob.emit({
         jobTitle: jobTitleValue,
         companyName: companyNameValue,
         startDate: jobStartDate,
         currentJob: this.currentJob,
-        endDate: this.currentJob ? undefined : (this.endDate.value ?? ''),
+        endDate: jobEndDate,
         id: this.nextJobId
       });
       this.jobTitle.setValue('');
