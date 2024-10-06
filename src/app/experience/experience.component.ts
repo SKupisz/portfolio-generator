@@ -61,6 +61,7 @@ export class ExperienceComponent {
       this.companyName.setValue('');
       this.endDate.setValue('');
       this.startDate.setValue('');
+      this.endDate.enable();
     }
   }
 
